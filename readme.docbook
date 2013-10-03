@@ -1,0 +1,24 @@
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+<title>About this Directory</title>
+
+<para>This organization directory can contain a listing of systems integrators, contractors, training organizations, consultants, and research communities involved in publishing and consuming Linked Data.  It provides forms for contact details for organizations including:</para>
+
+<itemizedlist>
+	<listitem><simpara>Local, State and National Government</simpara></listitem>
+	<listitem><simpara>Non-government and non-profits</simpara></listitem>
+	<listitem><simpara>Private sector</simpara></listitem>
+	<listitem><simpara>University R&amp;D</simpara></listitem>
+	<listitem><simpara>Private R&amp;D</simpara></listitem>
+	<listitem><simpara>Outreach and Advocacy groups</simpara></listitem>
+</itemizedlist>
+
+<para>If you are <link xl:href="Organization?create">adding an organization</link>, include the full address, a specific email address for someone to contact about the services and/or research.  This directory provides <link xl:href="statistics.xhtml?view">statistics by geography</link> based on the address.  You may also include information about deployments.  Please use <link xl:href="http://www.wikicreole.org/">wiki syntax </link>when entering descriptive information. </para>
+
+<section><title>Four Ways to View the Directory</title>
+
+<itemizedlist>
+	<listitem><simpara><link xl:href="directory-list.rq?view">Directory listing</link></simpara></listitem>
+	<listitem><simpara><link xl:href="categories-list.xhtml?view">View by categories</link></simpara></listitem>
+	<listitem><simpara><link xl:href="statistics.xhtml?view">Directory statistics</link></simpara></listitem>
+</itemizedlist>
+</section></article>

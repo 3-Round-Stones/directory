@@ -1,0 +1,9 @@
+@prefix calli: <http://callimachusproject.org/rdf/2009/framework#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<> a </callimachus/1.0/types/Concept> , skos:Concept ;
+    skos:prefLabel "1 star RDF - Available under an open license" ;
+    calli:administrator </auth/groups/admin> ;
+    calli:editor </auth/groups/staff> ;
+    calli:reader </auth/groups/users> .

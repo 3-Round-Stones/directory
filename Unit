@@ -1,0 +1,13 @@
+@prefix calli: <http://callimachusproject.org/rdf/2009/framework#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<> a </callimachus/1.0/types/Class> , <http://www.w3.org/2002/07/owl#Class> ;
+    rdfs:label "Unit" ;
+    calli:administrator </auth/groups/admin> ;
+    calli:author </auth/groups/admin> , </auth/groups/staff> , </auth/groups/users> ;
+    calli:create <unit-create.xhtml> ;
+    calli:editor </auth/groups/staff> ;
+    calli:icon <organization.png> ;
+    calli:reader </auth/groups/users> ;
+    rdfs:subClassOf </callimachus/1.0/types/Composite> , </callimachus/1.0/types/Serviceable> , <Organization> .

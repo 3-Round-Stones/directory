@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="/callimachus/template.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:calli="http://callimachusproject.org/rdf/2009/framework#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+    xmlns:gr="http://purl.org/goodrelations/v1#"
+    xmlns:directory="http://dir.w3.org/rdf/2012/directory/">
+<head>
+	<title>New Organization</title>
+	<script type="text/javascript">
+		function updateLabel() {
+			var label = $('#legal').val();
+            $('#label').val(label);
+            $('#fn').val(label);
+            $('#name').val(label);
+		}
+	</script>
+</head>
+<body>
+    <h1>New Organization</h1>
+	<form id="form" typeof="vcard:Organization vcard:VCard gr:BusinessEntity"
+            method="POST" action="" enctype="application/rdf+xml"
+            onsubmit="updateLabel();return calli.saveResourceAs(event, calli.slugify($('#label').val()))">
+		<div class="control-group">
+    		<label for="name" class="control-label">Legal Name</label>
+			<div class="controls">
+				<input id="legal" type="text" autofocus="autofocus" required="required" value="{gr:legalName}" />
+            	<input id="label" type="hidden" value="{rdfs:label}" />
+        		<input id="fn" type="hidden" value="{vcard:fn}" />
+        		<input id="name" type="hidden" value="{vcard:organization-name}" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label for="orgtype" class="control-label">Type of Organization</label>
+            <div class="controls">
+    			<select id="orgtype" rel="directory:isOrganizationType">
+    				<option selected="selected" about="?orgtype" rev="calli:hasComponent" resource="type-of-organization/" property="skos:prefLabel" />
+    			</select>
+            </div>
+		</div>
+
+		<div class="control-group">
+			<label for="url" class="control-label">Web site URL</label>
+            <div class="controls">
+			    <input id="url" type="url" required="required" value="{vcard:url}" style="width:52ex" />
+            </div>
+		</div>
+		<div class="hbox">
+			<div class="control-group">
+				<label for="email" class="control-label">Email</label>
+                <div class="controls">
+				    <input id="email" type="email" value="{vcard:workEmail}" title="Preferred e-mail address for contact" />
+                </div>
+			</div>
+			<div class="control-group">
+				<label for="tel" class="control-label">Telephone</label>
+                <div class="controls">
+				    <input id="tel" type="text" placeholder="+country code-area-number" value="{vcard:workTel}" />
+                </div>
+			</div>
+		</div>
+        <div class="control-group">
+    		<label for="adr" class="control-label">Address <a href="javascript:void(0)" title="Another Address"
+                onclick="return calli.addResource(event,'#adr')" class="ui-icon ui-icon-plus" /></label>
+    		<div id="adr" rel="vcard:adr" class="vbox controls">
+    			<div typeof="vcard:Address">
+    				<div class="hbox">
+    					<div class="vbox">
+    						<input type="text" placeholder="street address" value="{vcard:street-address}" />
+    						<input type="text" placeholder="extended address" value="{vcard:extended-address}" />
+    						<input type="text" placeholder="po box" value="{vcard:post-office-box}" />
+    					</div>
+    					<div class="vbox">
+    						<input type="text" placeholder="city" value="{vcard:locality}" />
+    						<input type="text" placeholder="state or province" value="{vcard:region}" />
+    						<input type="text" placeholder="postal code" value="{vcard:postal-code}" />
+    						<input type="hidden" value="{vcard:country-name}" />
+    					</div>
+    				</div>
+    				<div>
+    					<select onchange="$(this).parent().parent().children().children('div').find(':hidden').val(value).change()">
+    						<option value="{vcard:country-name}">{vcard:country-name}</option>
+<option>Afghanistan</option>
+<option>Åland Islands</option>
+<option>Albania</option>
+<option>Algeria</option>
+<option>American Samoa</option>
+<option>Andorra</option>
+<option>Angola</option>
+<option>Anguilla</option>
+<option>Antarctica</option>
+<option>Antigua and Barbuda</option>
+<option>Argentina</option>
+<option>Armenia</option>
+<option>Aruba</option>
+<option>Australia</option>
+<option>Austria</option>
+<option>Azerbaijan</option>
+<option>Bahamas</option>
+<option>Bahrain</option>
+<option>Bangladesh</option>
+<option>Barbados</option>
+<option>Belarus</option>
+<option>Belgium</option>
+<option>Belize</option>
+<option>Benin</option>
+<option>Bermuda</option>
+<option>Bhutan</option>
+<option>Bolivia, Plurinational State of</option>
+<option>Bonaire, Sint Eustatius and Saba</option>
+<option>Bosnia and Herzegovina</option>
+<option>Botswana</option>
+<option>Bouvet Island</option>
+<option>Brazil</option>
+<option>British Indian Ocean Territory</option>
+<option>Brunei Darussalam</option>
+<option>Bulgaria</option>
+<option>Burkina Faso</option>
+<option>Burundi</option>
+<option>Cambodia</option>
+<option>Cameroon</option>
+<option>Canada</option>
+<option>Cape Verde</option>
+<option>Cayman Islands</option>
+<option>Central African Republic</option>
+<option>Chad</option>
+<option>Chile</option>
+<option>China</option>
+<option>Christmas Island</option>
+<option>Cocos (Keeling) Islands</option>
+<option>Colombia</option>
+<option>Comoros</option>
+<option>Congo</option>
+<option>Congo, the Democratic Republic of the</option>
+<option>Cook Islands</option>
+<option>Costa Rica</option>
+<option>Côte d'Ivoire</option>
+<option>Croatia</option>
+<option>Cuba</option>
+<option>Curaçao</option>
+<option>Cyprus</option>
+<option>Czech Republic</option>
+<option>Denmark</option>
+<option>Djibouti</option>
+<option>Dominican Republic</option>
+<option>Dominica</option>
+<option>Ecuador</option>
+<option>Egypt</option>
+<option>El Salvador</option>
+<option>Equatorial Guinea</option>
+<option>Eritrea</option>
+<option>Estonia</option>
+<option>Ethiopia</option>
+<option>Falkland Islands (Malvinas)</option>
+<option>Faroe Islands</option>
+<option>Fiji</option>
+<option>Finland</option>
+<option>France</option>
+<option>French Guiana</option>
+<option>French Polynesia</option>
+<option>French Southern Territories</option>
+<option>Gabon</option>
+<option>Gambia</option>
+<option>Georgia</option>
+<option>Germany</option>
+<option>Ghana</option>
+<option>Gibraltar</option>
+<option>Greece</option>
+<option>Greenland</option>
+<option>Grenada</option>
+<option>Guadeloupe</option>
+<option>Guam</option>
+<option>Guatemala</option>
+<option>Guernsey</option>
+<option>Guinea-Bissau</option>
+<option>Guinea</option>
+<option>Guyana</option>
+<option>Haiti</option>
+<option>Heard Island and McDonald Islands</option>
+<option>Holy See (Vatican City State)</option>
+<option>Honduras</option>
+<option>Hong Kong</option>
+<option>Hungary</option>
+<option>Iceland</option>
+<option>India</option>
+<option>Indonesia</option>
+<option>Iran, Islamic Republic of</option>
+<option>Iraq</option>
+<option>Ireland</option>
+<option>Isle of Man</option>
+<option>Israel</option>
+<option>Italy</option>
+<option>Jamaica</option>
+<option>Japan</option>
+<option>Jersey</option>
+<option>Jordan</option>
+<option>Kazakhstan</option>
+<option>Kenya</option>
+<option>Kiribati</option>
+<option>Korea, Democratic People's Republic of</option>
+<option>Korea, Republic of</option>
+<option>Kuwait</option>
+<option>Kyrgyzstan</option>
+<option>Lao People's Democratic Republic</option>
+<option>Latvia</option>
+<option>Lebanon</option>
+<option>Lesotho</option>
+<option>Liberia</option>
+<option>Libya</option>
+<option>Liechtenstein</option>
+<option>Lithuania</option>
+<option>Luxembourg</option>
+<option>Macao</option>
+<option>Macedonia, the former Yugoslav Republic of</option>
+<option>Madagascar</option>
+<option>Malawi</option>
+<option>Malaysia</option>
+<option>Maldives</option>
+<option>Mali</option>
+<option>Malta</option>
+<option>Marshall Islands</option>
+<option>Martinique</option>
+<option>Mauritania</option>
+<option>Mauritius</option>
+<option>Mayotte</option>
+<option>Mexico</option>
+<option>Micronesia, Federated States of</option>
+<option>Moldova, Republic of</option>
+<option>Monaco</option>
+<option>Mongolia</option>
+<option>Montenegro</option>
+<option>Montserrat</option>
+<option>Morocco</option>
+<option>Mozambique</option>
+<option>Myanmar</option>
+<option>Namibia</option>
+<option>Nauru</option>
+<option>Nepal</option>
+<option>Netherlands</option>
+<option>New Caledonia</option>
+<option>New Zealand</option>
+<option>Nicaragua</option>
+<option>Nigeria</option>
+<option>Niger</option>
+<option>Niue</option>
+<option>Norfolk Island</option>
+<option>Northern Mariana Islands</option>
+<option>Norway</option>
+<option>Oman</option>
+<option>Pakistan</option>
+<option>Palau</option>
+<option>Palestinian Territory, Occupied</option>
+<option>Panama</option>
+<option>Papua New Guinea</option>
+<option>Paraguay</option>
+<option>Peru</option>
+<option>Philippines</option>
+<option>Pitcairn</option>
+<option>Poland</option>
+<option>Portugal</option>
+<option>Puerto Rico</option>
+<option>Qatar</option>
+<option>Réunion</option>
+<option>Romania</option>
+<option>Russian Federation</option>
+<option>Rwanda</option>
+<option>Saint Barthélemy</option>
+<option>Saint Helena, Ascension and Tristan da Cunha</option>
+<option>Saint Kitts and Nevis</option>
+<option>Saint Lucia</option>
+<option>Saint Martin (French part)</option>
+<option>Saint Pierre and Miquelon</option>
+<option>Saint Vincent and the Grenadines</option>
+<option>Samoa</option>
+<option>San Marino</option>
+<option>Sao Tome and Principe</option>
+<option>Saudi Arabia</option>
+<option>Senegal</option>
+<option>Serbia</option>
+<option>Seychelles</option>
+<option>Sierra Leone</option>
+<option>Singapore</option>
+<option>Sint Maarten (Dutch part)</option>
+<option>Slovakia</option>
+<option>Slovenia</option>
+<option>Solomon Islands</option>
+<option>Somalia</option>
+<option>South Africa</option>
+<option>South Georgia and the South Sandwich Islands</option>
+<option>South Sudan</option>
+<option>Spain</option>
+<option>Sri Lanka</option>
+<option>Sudan</option>
+<option>Suriname</option>
+<option>Svalbard and Jan Mayen</option>
+<option>Swaziland</option>
+<option>Sweden</option>
+<option>Switzerland</option>
+<option>Syrian Arab Republic</option>
+<option>Taiwan, Province of China</option>
+<option>Tajikistan</option>
+<option>Tanzania, United Republic of</option>
+<option>Thailand</option>
+<option>Timor-Leste</option>
+<option>Togo</option>
+<option>Tokelau</option>
+<option>Tonga</option>
+<option>Trinidad and Tobago</option>
+<option>Tunisia</option>
+<option>Turkey</option>
+<option>Turkmenistan</option>
+<option>Turks and Caicos Islands</option>
+<option>Tuvalu</option>
+<option>Uganda</option>
+<option>Ukraine</option>
+<option>United Arab Emirates</option>
+<option>United Kingdom</option>
+<option>United States Minor Outlying Islands</option>
+<option>United States</option>
+<option>Uruguay</option>
+<option>Uzbekistan</option>
+<option>Vanuatu</option>
+<option>Venezuela, Bolivarian Republic of</option>
+<option>Viet Nam</option>
+<option>Virgin Islands, British</option>
+<option>Virgin Islands, U.S.</option>
+<option>Wallis and Futuna</option>
+<option>Western Sahara</option>
+<option>Yemen</option>
+<option>Zambia</option>
+<option>Zimbabwe</option>
+    					</select>
+    				</div>
+    				<a href="javascript:void(0)" title="Remove This Address" onclick="return calli.removeResource(event)" class="ui-icon ui-icon-close" />
+                </div>
+			</div>
+		</div>
+        <div class="form-actions">
+		    <button id="create" type="submit" class="btn btn-success">Create</button>
+        </div>
+	</form>
+</body>
+</html>

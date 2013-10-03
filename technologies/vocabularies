@@ -1,0 +1,10 @@
+@prefix calli: <http://callimachusproject.org/rdf/2009/framework#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<> a </callimachus/1.0/types/Concept> , skos:Concept ;
+    skos:definition "Per the W3C, at times it may be important or valuable to organize data. Using OWL (to build vocabularies, or “ontologies”) and SKOS (for designing knowledge organization systems) it is possible to enrich data with additional meaning, which allows more people (and more machines) to do more with the data" ;
+    skos:prefLabel "Vocabularies" ;
+    calli:administrator </auth/groups/admin> ;
+    calli:editor </auth/groups/staff> ;
+    calli:reader </auth/groups/users> .

@@ -1,0 +1,17 @@
+prefix vcard:<http://www.w3.org/2006/vcard/ns#>
+prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+prefix skos:<http://www.w3.org/2004/02/skos/core#>
+prefix directory:<http://dir.w3.org/rdf/2012/directory/>
+select ?organization ?org (?org as ?url) ?category ?country ?orgtype
+where {
+  ?org a vcard:Organization ;
+		rdfs:label ?organization .
+	OPTIONAL {
+		?org vcard:category ?cat .
+		?cat skos:prefLabel ?category . }
+	OPTIONAL {
+		?org vcard:adr ?adr .
+		?adr vcard:country-name ?country . }
+	OPTIONAL {
+		?org directory:isOrganizationType [skos:prefLabel ?orgtype] . }
+} LIMIT 2000

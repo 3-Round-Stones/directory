@@ -1,0 +1,10 @@
+@prefix calli: <http://callimachusproject.org/rdf/2009/framework#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<> a </callimachus/1.0/types/Concept> , skos:Concept ;
+    skos:definition "Provides software that connects software components or people and their applications. This technology evolved to provide for interoperability in support of the move to coherent distributed architectures, which are most often used to support and simplify complex distributed applications" ;
+    skos:prefLabel "Middleware" ;
+    calli:administrator </auth/groups/admin> ;
+    calli:editor </auth/groups/staff> ;
+    calli:reader </auth/groups/users> .

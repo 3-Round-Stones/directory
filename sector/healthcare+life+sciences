@@ -1,0 +1,10 @@
+@prefix calli: <http://callimachusproject.org/rdf/2009/framework#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<> a </callimachus/1.0/types/Concept> , skos:Concept ;
+    skos:definition "Involved in the prevention, treatment, and management of illness and the preservation of mental and physical well-being through the services offered by the medical and allied health professions" ;
+    skos:prefLabel "Healthcare / Life Sciences" ;
+    calli:administrator </auth/groups/admin> ;
+    calli:editor </auth/groups/staff> ;
+    calli:reader </auth/groups/users> .

@@ -1,0 +1,10 @@
+@prefix calli: <http://callimachusproject.org/rdf/2009/framework#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<> a </callimachus/1.0/types/Concept> , skos:Concept ;
+    skos:definition "W3C is working with different industries — for example in Health Care and Life Sciences, eGovernment, and Energy — to improve collaboration, research and development, and innovation adoption through Semantic Web technology. For instance, by aiding decision-making in clinical research, Semantic Web technologies will bridge many forms of biological and medical information across institutions" ;
+    skos:prefLabel "Vertical applications" ;
+    calli:administrator </auth/groups/admin> ;
+    calli:editor </auth/groups/staff> ;
+    calli:reader </auth/groups/users> .

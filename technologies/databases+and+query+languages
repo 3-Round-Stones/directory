@@ -1,0 +1,10 @@
+@prefix calli: <http://callimachusproject.org/rdf/2009/framework#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<> a </callimachus/1.0/types/Concept> , skos:Concept ;
+    skos:definition "Per the W3C, query languages go hand-in-hand with databases. If the Semantic Web is viewed as a global database, we use the RDF family of standards to serialize data and SPARQL as the query language for the Web of data" ;
+    skos:prefLabel "Databases and query languages" ;
+    calli:administrator </auth/groups/admin> ;
+    calli:editor </auth/groups/staff> ;
+    calli:reader </auth/groups/users> .

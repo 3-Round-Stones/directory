@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="/callimachus/template.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:calli="http://callimachusproject.org/rdf/2009/framework#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+    xmlns:gr="http://purl.org/goodrelations/v1#"
+    xmlns:directory="http://dir.w3.org/rdf/2012/directory/">
+<head>
+	<title resource="?this">{rdfs:label}</title>
+</head>
+<body resource="?this">
+    <h1 property="rdfs:label" />
+	<form about="?this" typeof="foaf:Project" method="POST" enctype="application/sparql-update">
+		<div class="hbox">
+			<fieldset>
+				<div class="control-group">
+					<label for="label" class="control-label">Deployment name</label>
+                    <div class="controls">
+					    <input type="text" id="label" required="required" value="{rdfs:label}" />
+                    </div>
+				</div>
+				<div class="control-group">
+					<label for="web-page" class="control-label">Website</label>
+                    <div class="controls">
+					    <input type="url" id="web-page" placeholder="Web page with more detail" value="{foaf:homepage}" />
+                    </div>
+				</div>
+				<div class="control-group">
+					<label for="country" class="control-label">Country of Origin</label>
+                    <div class="controls">
+    					<select id="country" rel="directory:countryOfOrigin">
+    						<option selected="selected" about="?country" rev="calli:hasComponent" resource="countries/" property="skos:prefLabel" />
+    					</select>
+                    </div>
+				</div>
+				<div class="control-group">
+					<label for="comment" class="control-label">Comment</label>
+                    <div class="controls">
+					    <textarea id="comment" class="auto-expand">{rdfs:comment}</textarea>
+                    </div>
+				</div>
+			</fieldset>
+
+    		<fieldset>
+				<div class="control-group">
+					<label for="industry" class="control-label">Industry or domain category</label>
+					<div id="industry" rel="directory:inIndustry" class="sorted controls">
+						<label class="input" about="?industry" style="display:block">
+							<input type="checkbox" name="industry" checked="checked" />
+							<span rev="calli:hasComponent" resource="sector/" property="skos:prefLabel" class="asc" />
+						</label>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="control-group">
+					<label for="technologies" class="control-label">Technologies used</label>
+					<div id="technologies" rel="directory:usedTechnology" class="sorted controls">
+						<label class="input" about="?technology" style="display:block">
+							<input type="checkbox" name="technology" checked="checked" />
+							<span rev="calli:hasComponent" resource="technologies/" property="skos:prefLabel" class="asc" />
+						</label>
+					</div>
+				</div>
+			</fieldset>
+
+    		<fieldset>
+				<div class="control-group">
+					<label for="deployments" class="control-label">Availability <a href="http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/"
+                        target="_blank"><sup>?</sup></a></label>
+                    <div class="controls">
+    					<select id="deployments" rel="directory:availabilityLevel">
+    						<option selected="selected" about="?deployments" rev="calli:hasComponent"
+                                resource="linked-data-category/" property="skos:prefLabel" />
+    					</select>
+                    </div>
+				</div>
+				<div id="org" class="control-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
+					<label class="control-label">Participants <a href="./?view" title="Create" class="ui-icon ui-icon-newwin"
+                        onclick="return calli.selectResource(event)" /></label>
+					<div rel="directory:hasParticipant" class="vbox controls">
+                        <span about="?org" typeof="vcard:Organization" class="ui-state-highlight ui-corner-all">
+    						<span property="rdfs:label"></span>
+                        </span>
+					</div>
+				</div>
+            	<div class="control-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
+        			<label class="control-label">Depiction <a href="/callimachus/Image" title="Upload"
+            				onclick="return calli.createResource(event,location.pathname.replace(/\/[^/]*$/,'')+'?create='+this.href)"
+                            class="ui-icon ui-icon-newwin" /></label>
+        			<div rel="foaf:depiction" class="controls">
+                        <span about="?depiction" typeof="foaf:Image" class="ui-state-highlight ui-corner-all">
+            				<img src="{?depiction}" style="max-height:10em;max-width:10em" />
+                        </span>
+        			</div>
+        		</div>
+			</fieldset>
+		</div>
+        <div class="form-actions">
+    		<button id="save" type="submit" class="btn btn-primary">Save</button>
+    		<button id="cancel" type="button" onclick="location.replace('?view')" class="btn">Cancel</button>
+    		<button id="delete" type="button" onclick="calli.deleteResource(event,location.pathname.replace(/\/[^/]*$/,''))" class="btn btn-danger">Delete</button>
+        </div>
+	</form>
+</body>
+</html>

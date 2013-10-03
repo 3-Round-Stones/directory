@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="/callimachus/template.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
+<head>
+	<title>Directory of Organizations working with Linked Data</title>
+	<script>
+		$(document).ready(function() {
+			if ($("#results").children().size() == 0) {
+				$("#results").parent().after("<p>No organizations</p>");
+			}
+			$('.adr').children(':empty').remove();
+			$('.adr').children(':not(:first-child)').remove();
+		})
+	</script>
+</head>
+<body>
+	<h1>Directory of Organizations working with Linked Data</h1>
+	<div id="sidebar">
+        <aside>
+    		<p class="hidden-logout"><a href="Organization?create">Create new Organization</a></p>
+    		<p><a href="categories-list.xhtml?view">View by Category</a></p>
+	    </aside>
+    </div>
+	<table>
+		<thead>
+			<tr>
+				<th>Organization</th>
+				<th>Country</th>
+			</tr>
+		</thead>
+		<tbody id="results" class="sorted">
+			<tr about="?org" typeof="vcard:Organization vcard:VCard">
+				<td><a href="?org" property="vcard:fn" class="asc"/></td>
+				<td class="adr"><span rel="vcard:adr" resource="?adr"><span property="vcard:country-name" /></span></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="/callimachus/template.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:calli="http://callimachusproject.org/rdf/2009/framework#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+    xmlns:gr="http://purl.org/goodrelations/v1#"
+    xmlns:directory="http://dir.w3.org/rdf/2012/directory/">
+<head>
+    <title resource="?this">{foaf:name}</title>
+</head>
+<body resource="?this">
+	<h1 property="foaf:name" />
+	<div id="sidebar">
+        <div rel="vcard:org" resource="?org">
+    		<aside><p><a href="{?org}">{gr:legalName} {vcard:organization-unit}</a></p></aside>
+    		<aside class="optional">
+                <h3>Contact</h3>
+    			<ul rev="vcard:org" class="sorted">
+    				<li about="?person" typeof="foaf:Person">
+    					<a href="{?person}" class="asc">{foaf:name}</a>
+    					<span property="vcard:role" content="?role">
+    						({?role})
+    					</span>
+    				</li>
+    			</ul>
+    		</aside>
+    		<aside class="optional">
+                <h3>Products or services</h3>
+    			<ul rev="gr:hasManufacturer" class="sorted">
+    				<li about="?service" typeof="gr:ProductOrServiceModel">
+    					<a href="{?service}" class="asc" property="rdfs:label" />
+    				</li>
+    			</ul>
+    		</aside>
+    		<aside class="optional">
+                <h3>Projects</h3>
+    			<ul rev="directory:hasParticipant" class="sorted">
+    				<li about="?project" typeof="foaf:Project">
+    					<a href="{?project}" class="asc" property="rdfs:label" />
+    				</li>
+    			</ul>
+    		</aside>
+        </div>
+	</div>
+    <div class="hbox">
+		<a href="{vcard:url}" target="_blank">{vcard:url}</a>
+		<a href="mailto:{vcard:workEmail}" property="vcard:workEmail" />
+		<a href="tel:{vcard:workTel}" property="vcard:workTel" />
+	</div>
+	<div class="hbox">
+		<p class="vbox" rel="vcard:adr" resource="?adr">
+		    {vcard:street-address} {vcard:extended-address} {vcard:post-office-box}<br />
+		    {vcard:locality} {vcard:region}<br />
+		    {vcard:postal-code}<br />
+		    {vcard:country-name}<br />
+		</p>
+	</div>
+    <pre class="wiki" property="vcard:note" content="?note">{?note}</pre>
+</body>
+</html>

@@ -1,0 +1,5 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix calli: <http://callimachusproject.org/rdf/2009/framework#> .
+
+<./> calli:describedby <readme.docbook?view> .

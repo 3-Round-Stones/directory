@@ -391,7 +391,7 @@
 					<label class="control-label">Contact Person <a href="Person" title="Create" class="ui-icon ui-icon-newwin"
                         onclick="return calli.createResource(event,'?create='+this.href)" /></label>
                     <div rev="vcard:org" class="vbox controls">
-    					<span about="?person" typeof="foaf:Person" class="ui-state-highlight ui-corner-all">
+    					<span typeof="foaf:Person" class="ui-state-highlight ui-corner-all">
     						<span property="foaf:name"></span>
     						<span property="vcard:role" content="?role">
     							({?role})
@@ -405,7 +405,7 @@
 					<label class="control-label">Products, Services, or Projects <a href="ProductOrService" title="Create" class="ui-icon ui-icon-newwin"
                         onclick="return calli.createResource(event,'?create='+this.href)" /></label>
 					<div rev="gr:hasManufacturer" class="vbox controls">
-                        <span about="?service" typeof="gr:ProductOrServiceModel" class="ui-state-highlight ui-corner-all">
+                        <span typeof="gr:ProductOrServiceModel" class="ui-state-highlight ui-corner-all">
 						    <span property="rdfs:label"></span>
                         </span>
 					</div>

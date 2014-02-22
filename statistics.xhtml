@@ -3,6 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Statistics</title>
+    
+    <style type="text/css">
+        .chart {
+            height: 300px;
+            width: 400px
+        }
+    </style>
     <script src="https://www.google.com/jsapi" type="text/javascript"> </script>
 	<script type="text/javascript">
 		google.load("visualization", "1", {callback: function(){
@@ -50,24 +57,30 @@
 	</script>
 </head>
 <body>
-	<h1>Statistics</h1>
-    <div class="hbox">
-        <div>
-    	    <h2>Organizations by Country</h2>
-            <div id="chart1" class="chart" style="height:300px;width:400px"></div>
-        </div>
-        <div>
-            <h2>Projects by Country</h2>
-            <div id="chart2" class="chart" style="height:300px;width:400px"></div>
-        </div>
-        <div>
-            <h2>Projects by Type of Organization</h2>
-            <div id="chart3" class="chart" style="height:300px;width:400px"></div>
-        </div>
-        <div>
-            <h2>Projects by Industry or Domain Category</h2>
-            <div id="chart4" class="chart" style="height:300px;width:400px"></div>
-        </div>
+    <div class="container">
+        <fieldset class="row">
+            <legend><h2>Geographic Statistics</h2></legend>
+            <div class="col-sm-6">
+                <h3>Organizations by Country</h3>
+                <div id="chart1" class="chart" />
+            </div>
+            <div class="col-sm-6">
+                <h3>Projects by Country</h3>
+                <div id="chart2" class="chart" />
+            </div>
+        </fieldset>
+        <br/>
+        <fieldset class="row">
+            <legend><h2>Categorical Statistics</h2></legend>
+            <div class="col-sm-6">
+                <h3>Projects by Type of Organization</h3>
+                <div id="chart3" class="chart" />
+            </div>
+            <div class="col-sm-6">
+                <h3>Projects by Industry or Domain Category</h3>
+                <div id="chart4" class="chart" />
+            </div>
+        </fieldset>
     </div>
 </body>
 </html>

@@ -15,78 +15,95 @@
 	<title resource="?this">{gr:legalName}</title>
 </head>
 <body resource="?this">
-	<hgroup>
-		<h1 property="gr:legalName" />
-		<h2 property="vcard:organization-unit" />
-	</hgroup>
-    <div id="sidebar">
-        <aside class="optional">
-        	<h3>Business Units</h3>
-			<ul rel="directory:hasOrganizationalUnit" class="sorted">
-				<li about="?unit" typeof="vcard:Organization">
-					<a href="{?unit}" class="asc">{vcard:organization-unit}</a>
-				</li>
-			</ul>
-    	</aside>
-        <aside class="optional">
-    		<h3>Contact</h3>
-			<ul rev="vcard:org" class="sorted">
-				<li about="?person" typeof="foaf:Person">
-					<a href="{?person}" class="asc">{foaf:name}</a>
-					<span property="vcard:role" content="?role">
-						({?role})
-					</span>
-				</li>
-			</ul>
-    	</aside>
-    	<aside class="optional">
-            <h3>Products, services, or projects</h3>
-			<ul rev="gr:hasManufacturer" class="sorted">
-				<li about="?service" typeof="gr:ProductOrServiceModel">
-					<a href="{?service}" class="asc" property="rdfs:label" />
-				</li>
-			</ul>
-    	</aside>
-		<aside class="optional">
-            <h3>Deployments</h3>
-			<ul rev="directory:hasParticipant" class="sorted">
-				<li about="?project" typeof="foaf:Project">
-					<a href="{?project}" class="asc" property="rdfs:label" />
-				</li>
-			</ul>
-        	<p><a about="Project" href="Project"
-                onmousedown="this.href='?create='+$(this).attr('about')">Add deployment</a></p>
-		</aside>
-		<aside class="optional">
-            <h3>Experience</h3>
-			<ul class="sorted">
-				<li rel="vcard:category" resource="?category">
-					<a href="{?category}?whatlinkshere" class="asc">{skos:prefLabel}</a>
-				</li>
-			</ul>
-		</aside>
-    	<aside class="aside hidden-logout">
-    		<p>To add contacts, experience, products, services, or projects click on the edit tab at the top</p>
-    	</aside>
+    <div class="container">
+        <div class="page-header">
+            <h1>{gr:legalName} <small>{vcard:organizaton-unit}</small></h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2>Contact information</h2>
+                        <pre class="wiki" property="vcard:note" content="?note">{?note}</pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p>
+                            <a href="{vcard:url}" target="_blank">{vcard:url}</a>    
+                        </p>
+                        <p>
+                            <a href="mailto:{vcard:workEmail}" property="vcard:workEmail" target="_blank" />
+                        </p>
+                        <p>
+                            <a href="tel:{vcard:workTel}" target="_blank" property="vcard:workTel" />
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p rel="vcard:adr" resource="?adr">
+                            {vcard:street-address} {vcard:extended-address} {vcard:post-office-box}<br />
+                            {vcard:locality} {vcard:region}<br />
+                            {vcard:postal-code}<br />
+                            {vcard:country-name}<br />
+                        </p>    
+                    </div>
+                    <div class="col-sm-4">
+                        <div id="img" rel="foaf:depiction" resource="?img" style="margin: 0px 1ex 1ex 0px;max-width:40em">
+                            <a href="{?img}" class="view"><img src="{?img}?small" style="max-height:100%;max-width:40em" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <aside class="optional">
+                    <h3>Business Units</h3>
+                    <ul rel="directory:hasOrganizationalUnit" class="sorted">
+                        <li about="?unit" typeof="vcard:Organization">
+                            <a href="{?unit}" class="asc">{vcard:organization-unit}</a>
+                        </li>
+                    </ul>
+            	</aside>
+                <aside class="optional">
+                    <h3>Contact</h3>
+                    <ul rev="vcard:org" class="sorted">
+                        <li about="?person" typeof="foaf:Person">
+                            <a href="{?person}" class="asc">{foaf:name}</a>
+                            <span property="vcard:role" content="?role">
+                                ({?role})
+                            </span>
+                        </li>
+                    </ul>
+                </aside>
+                <aside class="optional">
+                    <h3>Products, services, or projects</h3>
+                    <ul rev="gr:hasManufacturer" class="sorted">
+                        <li about="?service" typeof="gr:ProductOrServiceModel">
+                            <a href="{?service}" class="asc" property="rdfs:label" />
+                        </li>
+                    </ul>
+                </aside>
+                <aside class="optional">
+                    <h3>Deployments</h3>
+                    <ul rev="directory:hasParticipant" class="sorted">
+                        <li about="?project" typeof="foaf:Project">
+                            <a href="{?project}" class="asc" property="rdfs:label" />
+                        </li>
+                    </ul>
+                    <p><a about="Project" href="Project" onmousedown="this.href='?create='+$(this).attr('about')">Add deployment</a></p>
+        		</aside>
+                <aside class="optional">
+                    <h3>Experience</h3>
+                    <ul class="sorted">
+                        <li rel="vcard:category" resource="?category">
+                            <a href="{?category}?whatlinkshere" class="asc">{skos:prefLabel}</a>
+                        </li>
+                    </ul>
+                </aside>
+                <aside class="aside hidden-logout">
+                    <p>To add contacts, experience, products, services, or projects click on the edit tab at the top</p>
+                </aside>
+            </div>
+        </div>
     </div>
-	<label>Contact information</label>
-    <div class="hbox">
-		<a href="{vcard:url}" target="_blank">{vcard:url}</a>
-		<a href="mailto:{vcard:workEmail}" property="vcard:workEmail" />
-		<a href="tel:{vcard:workTel}" property="vcard:workTel" />
-	</div>
-	<div class="hbox">
-		<p class="vbox" rel="vcard:adr" resource="?adr">
-		    {vcard:street-address} {vcard:extended-address} {vcard:post-office-box}<br />
-		    {vcard:locality} {vcard:region}<br />
-		    {vcard:postal-code}<br />
-		    {vcard:country-name}<br />
-		</p>
-	</div>
-    <div id="img" rel="foaf:depiction" resource="?img" style="margin: 0px 1ex 1ex 0px;max-width:40em">
-		<a href="{?img}" class="view"><img src="{?img}?small" style="max-height:100%;max-width:40em" /></a>
-	</div>
-	<label>Description</label>
-    <pre class="wiki" property="vcard:note" content="?note">{?note}</pre>
 </body>
 </html>

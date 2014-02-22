@@ -9,35 +9,54 @@
 	<title>Directory of Organizations working with Linked Data</title>
 	<script>
 		$(document).ready(function() {
-			if ($("#results").children().size() == 0) {
-				$("#results").parent().after("<p>No organizations</p>");
+            console.log($("#results").children().length);
+			if (!$("tbody").children().length) {
+                console.log($("#results").children().length);
+				$("#no-org").removeClass("hidden");
 			}
+            /*
 			$('.adr').children(':empty').remove();
 			$('.adr').children(':not(:first-child)').remove();
+            */
 		})
 	</script>
 </head>
 <body>
-	<h1>Directory of Organizations working with Linked Data</h1>
-	<div id="sidebar">
-        <aside>
-    		<p class="hidden-logout"><a href="Organization?create">Create new Organization</a></p>
-    		<p><a href="categories-list.xhtml?view">View by Category</a></p>
-	    </aside>
+    <div class="container">
+        <div class="page-header">
+            <h1>Directory of Organizations working with Linked Data</h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th><h2>Organization</h2></th>
+                            <th><h2>Country</h2></th>
+                        </tr>
+                    </thead>
+                    <tbody class="sorted">
+                        <tr resource="?org" typeof="vcard:Organization vcard:VCard">
+                            <td>
+                                <a href="?org" property="vcard:fn" class="asc"/>
+                            </td>
+                            <td class="adr">
+                                <span rel="vcard:adr" resource="?adr">
+                                    <span property="vcard:country-name" />
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p id="no-org" class="lead hidden text-center">No organizations</p>
+            </div>
+            <div class="col-sm-4">
+                <aside class="well well-sm lead">
+        	        <p class="hidden-logout"><a href="Organization?create">Create new Organization</a></p>
+    		        <p><a href="categories-list.xhtml?view">View by Category</a></p>
+	           </aside>
+            </div>
+        </div>
     </div>
-	<table>
-		<thead>
-			<tr>
-				<th>Organization</th>
-				<th>Country</th>
-			</tr>
-		</thead>
-		<tbody id="results" class="sorted">
-			<tr about="?org" typeof="vcard:Organization vcard:VCard">
-				<td><a href="?org" property="vcard:fn" class="asc"/></td>
-				<td class="adr"><span rel="vcard:adr" resource="?adr"><span property="vcard:country-name" /></span></td>
-			</tr>
-		</tbody>
-	</table>
 </body>
 </html>

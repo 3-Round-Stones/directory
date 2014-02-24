@@ -15,45 +15,57 @@
 	<title resource="?this">{rdfs:label}</title>
 </head>
 <body resource="?this">
-    <h1 property="rdfs:label" />
-    <div id="sidebar">
-    	<aside rel="directory:availabilityLevel" resource="?level"><p>{skos:prefLabel}</p></aside>
-    	<div class="sorted">
-    		<aside rel="directory:hasParticipant" resource="?org">
-    			<h3><a href="{?org}" class="asc">{gr:legalName} {vcard:organization-unit}</a></h3>
-				<ul rev="vcard:org" class="sorted">
-					<li about="?person" typeof="foaf:Person">
-						<a href="{?person}" class="asc">{foaf:name}</a>
-						<span property="vcard:role" content="?role">
-							({?role})
-						</span>
-					</li>
-				</ul>
-    		</aside>
-    	</div>
-	    <aside class="optional">
-            <h3>Industry or domain category</h3>
-			<ul class="sorted">
-				<li rel="directory:inIndustry" resource="?category">
-					<a href="{?category}" class="asc">{skos:prefLabel}</a>
-				</li>
-			</ul>
-		</aside>
-		<aside>
-            <h3>Technology used</h3>
-			<ul class="sorted">
-				<li rel="directory:usedTechnology" resource="?technology">
-					<a href="{?technology}" class="asc">{skos:prefLabel}</a>
-				</li>
-			</ul>
-		</aside>
+    <div class="container">
+        <div class="page-header">
+            <h1 property="rdfs:label" />
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <pre class="wiki" property="rdfs:comment" content="?comment">{?comment}</pre>
+                <p rel="foaf:homepage" resource="?homepage">
+                	Homepage: <a href="{?homepage}" target="_blank">{?homepage}</a>
+            	</p>
+                <p rel="directory:availabilityLevel" resource="?level">
+                    <p>Availability: {skos:prefLabel}</p>
+                </p>
+            	<div id="img" rel="foaf:depiction" resource="?img">
+            		<a href="{?img}" class="view">
+                        <img src="{?img}?small" />
+                    </a>
+            	</div>
+            </div>
+            <div class="col-sm-4">
+                <aside class="sorted well well-sm">
+                    <div rel="directory:hasParticipant" resource="?org">
+                        <h4><a href="{?org}" class="asc">{gr:legalName} {vcard:organization-unit}</a></h4>
+            			<ul rev="vcard:org" class="sorted">
+        					<li about="?person" typeof="foaf:Person">
+        						<a href="{?person}" class="asc">{foaf:name}</a>
+        						<span property="vcard:role" content="?role">
+        							({?role})
+        						</span>
+        					</li>
+        				</ul>
+                    </div>
+                </aside>
+                <aside class="optional well well-sm">
+                    <h4>Industry or domain category</h4>
+            		<ul class="sorted">
+        				<li rel="directory:inIndustry" resource="?category">
+        					<a href="{?category}" class="asc">{skos:prefLabel}</a>
+        				</li>
+        			</ul>
+                </aside>
+                <aside class="well well-sm">
+                    <h3>Technology used</h3>
+            		<ul class="sorted">
+        				<li rel="directory:usedTechnology" resource="?technology">
+        					<a href="{?technology}" class="asc">{skos:prefLabel}</a>
+        				</li>
+        			</ul>
+        		</aside>
+            </div>
+        </div>
     </div>
-	<p rel="foaf:homepage" resource="?homepage">
-		<a href="{?homepage}" target="_blank">{?homepage}</a>
-	</p>
-	<div id="img" rel="foaf:depiction" resource="?img" style="margin: 0px 1ex 1ex 0px;max-width:40em">
-		<a href="{?img}" class="view"><img src="{?img}?small" style="max-height:100%;max-width:40em" /></a>
-	</div>
-	<pre class="wiki" property="rdfs:comment" content="?comment">{?comment}</pre>
 </body>
 </html>

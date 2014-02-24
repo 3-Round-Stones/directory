@@ -350,14 +350,14 @@
                 <div class="col-sm-4">
                     <div id="units" class="form-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
                         <h4>Business Units <a href="Unit" title="Create" onclick="return calli.createResource(event,'?create='+this.href)"><span class="glyphicon glyphicon-plus" /></a></h4>
-                        <span about="?units" typeof="vcard:Organization" class="ui-state-highlight ui-corner-all">
-                            <span property="vcard:organization-unit"></span>
+                        <span about="?units" typeof="vcard:Organization">
+                            <span class="label label-warning" property="vcard:organization-unit"></span>
                         </span>
                     </div>
                     <div id="person" class="form-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
                         <h4>Contact Person <a href="Person" title="Create" onclick="return calli.createResource(event,'?create='+this.href)"><span class="glyphicon glyphicon-plus" /></a></h4>
                         <div rev="vcard:org">
-                            <span typeof="foaf:Person" class="ui-state-highlight ui-corner-all">
+                            <span typeof="foaf:Person" class="label label-warning">
                                 <span property="foaf:name"></span>
                                     <span property="vcard:role" content="?role">
                                     ({?role})

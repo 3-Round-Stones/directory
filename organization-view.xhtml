@@ -89,7 +89,7 @@
                             <a href="{?project}" class="asc" property="rdfs:label" />
                         </li>
                     </ul>
-                    <p><a about="Project" href="Project" onmousedown="this.href='?create='+$(this).attr('about')">Add deployment</a></p>
+                    <p><a about="Project" href="Project" onclick="return calli.createResource(event,'?create='+this.href)">Add deployment</a></p>
         		</aside>
                 <aside class="optional">
                     <h3>Experience</h3>

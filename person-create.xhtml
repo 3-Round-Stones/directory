@@ -22,79 +22,59 @@
     </script>
 </head>
 <body>
-	<h1>New Person</h1>
-	<form typeof="foaf:Person vcard:VCard"
-            method="POST" action="" enctype="application/rdf+xml"
-            onsubmit="return calli.saveResourceAs(event, calli.slugify($('#name').val()))">
-	<div class="hbox">
-		<div class="control-group">
-			<label for="name" class="control-label">Full name</label>
-            <div class="controls">
-    			<input type="text" id="name" autofocus="autofocus" placeholder="Full name" required="required" value="{foaf:name}"
-                    onchange="$('#label').val(value);$('#fn').val(value)" />
-        		<input id="label" type="hidden" placeholder="label" value="{rdfs:label}" />
-    			<input id="fn" type="hidden" placeholder="Formatted name" value="{vcard:fn}" />
-            </div>
-		</div>
-		<div class="control-group">
-			<label for="role" class="control-label">Job title</label>
-            <div class="controls">
-			    <input type="text" id="role" placeholder="role" value="{vcard:role}" />
-            </div>
-		</div>
-	</div>
-	<div class="hbox">
-		<div class="control-group">
-			<label for="email" class="control-label">Email</label>
-            <div class="controls">
-		        <input id="email" type="email" placeholder="email" value="{vcard:workEmail}" />
-            </div>
-		</div>
-		<div class="controls-group">
-			<label for="tel" class="control-label">Telephone</label>
-            <div class="controls">
-			    <input type="text" id="tel" placeholder="+country code-area-number" value="{vcard:workTel}" />
-            </div>
-		</div>
-	</div>
-    <div>
-		<div id="org" class="control-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
-			<label class="control-label">Member of organization</label>
-            <div rel="vcard:org" class="vbox controls">
-				<span about="?org" typeof="vcard:Organization" class="ui-state-highlight ui-corner-all">
-					<span property="vcard:organization-name" />
-					<span property="vcard:organization-unit" />
-				</span>
-            </div>
-		</div>
-    </div>
-	<div class="control-group">
-		<label for="same" class="control-label">FOAF ID</label>
-        <div class="controls">
-		    <input id="same" type="url" value="{owl:sameAs}" />
+    <div class="container">
+        <div class="page-header">
+            <h1>New Person</h1>
         </div>
-	</div>
-    <div class="control-group">
-    	<label for="adr" class="control-label">Address <a href="javascript:void(0)" title="Another Address"
-                onclick="return calli.addResource(event,'#adr')" class="ui-icon ui-icon-plus" /></label>
-    	<div id="adr" rel="vcard:adr" class="vbox controls">
-    		<div typeof="vcard:Address">
-    			<div class="hbox">
-    				<div class="vbox">
-    					<input type="text" placeholder="street address" value="{vcard:street-address}" />
-    					<input type="text" placeholder="extended address" value="{vcard:extended-address}" />
-    					<input type="text" placeholder="po box" value="{vcard:post-office-box}" />
-    				</div>
-    				<div class="vbox">
-    					<input type="text" placeholder="city" value="{vcard:locality}" />
-    					<input type="text" placeholder="state or province" value="{vcard:region}" />
-    					<input type="text" placeholder="postal code" value="{vcard:postal-code}" />
-    					<input type="hidden" value="{vcard:country-name}" />
-    				</div>
-    			</div>
-    			<div>
-    				<select onchange="$(this).parent().parent().children().children('div').find(':hidden').val(value).change()">
-    					<option value="{vcard:country-name}">{vcard:country-name}</option>
+        <form typeof="foaf:Person vcard:VCard" method="POST" action="" enctype="application/rdf+xml" onsubmit="return calli.saveResourceAs(event, calli.slugify($('#name').val()))">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h4 for="name">Full name</h4>
+                		<input type="text" id="name" autofocus="autofocus" placeholder="Full name" required="required" value="{foaf:name}" class="form-control" onchange="$('#label').val(value);$('#fn').val(value)" />
+                		<input id="label" type="hidden" placeholder="label" value="{rdfs:label}" />
+            			<input id="fn" type="hidden" placeholder="Formatted name" value="{vcard:fn}" />
+                    </div>
+                    <div class="form-group">
+                        <h4 for="role">Job title</h4>
+            		    <input type="text" id="role" placeholder="role" value="{vcard:role}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <h4 for="email">Email</h4>
+            	        <input id="email" type="email" placeholder="email" value="{vcard:workEmail}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <h4 for="tel">Telephone</h4>
+                        <input type="text" id="tel" placeholder="+country code-area-number" value="{vcard:workTel}" class="form-control" />
+                    </div>
+                    <div id="org" class="form-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
+                    	<h4>Member of organization</h4>
+                        <div rel="vcard:org">
+            				<span about="?org" typeof="vcard:Organization" class="label label-warning">
+            					<span property="vcard:organization-name" />
+            					<span property="vcard:organization-unit" />
+            				</span>
+                        </div>
+            		</div>
+                    <div class="form-group">
+                        <label for="same">FOAF ID</label>
+                        <input id="same" type="url" value="{owl:sameAs}" class="form-control" />
+                	</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="adr">Address <a href="javascript:void(0)" title="Another Address" onclick="return calli.addResource(event,'#adr')"><span class="glyphicon glyphicon-plus" /></a></label>
+                        <div id="adr" rel="vcard:adr">
+                            <div typeof="vcard:Address">
+                                <input type="text" placeholder="street address" value="{vcard:street-address}" class="form-control" />
+                                <input type="text" placeholder="extended address" value="{vcard:extended-address}" class="form-control" />
+                                <input type="text" placeholder="po box" value="{vcard:post-office-box}" class="form-control" />
+                                <input type="text" placeholder="city" value="{vcard:locality}" class="form-control" />
+                                <input type="text" placeholder="state or province" value="{vcard:region}" class="form-control" />
+                                <input type="text" placeholder="postal code" value="{vcard:postal-code}" class="form-control" />
+                                <input type="hidden" value="{vcard:country-name}" />
+                                <select onchange="$(this).parent().parent().children().children('div').find(':hidden').val(value).change()" class="form-control">
+<option value="{vcard:country-name}">{vcard:country-name}</option>
 <option>Afghanistan</option>
 <option>Åland Islands</option>
 <option>Albania</option>
@@ -344,21 +324,23 @@
 <option>Yemen</option>
 <option>Zambia</option>
 <option>Zimbabwe</option>
-    				</select>
-    			</div>
-        		<a href="javascript:void(0)" title="Remove This Address" onclick="return calli.removeResource(event)" class="ui-icon ui-icon-close" />
-    		</div>
-        </div>
-	</div>
-    <div class="control-group">
-    	<label for="note" class="control-label">Note</label>
-    	<div class="controls">
-    		<textarea id="note" placeholder="note" class="auto-expand">{vcard:note}</textarea>
-    	</div>
+                                </select>   
+                                <a href="javascript:void(0)" title="Remove This Address" onclick="return calli.removeResource(event)"><span class="glyphicon glyphicon-remove" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="note" class="control-label">Note</label>
+                		<textarea id="note" placeholder="note" class="auto-expand form-control">{vcard:note}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button id="create" type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-actions">
-	    <button id="create" type="submit" class="btn btn-primary">Create</button>
-    </div>
-</form>
 </body>
 </html>

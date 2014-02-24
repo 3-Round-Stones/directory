@@ -15,52 +15,66 @@
     <title resource="?this">{foaf:name}</title>
 </head>
 <body resource="?this">
-	<h1 property="foaf:name" />
-	<div id="sidebar">
-        <div rel="vcard:org" resource="?org">
-    		<aside><p><a href="{?org}">{gr:legalName} {vcard:organization-unit}</a></p></aside>
-    		<aside class="optional">
-                <h3>Contact</h3>
-    			<ul rev="vcard:org" class="sorted">
-    				<li about="?person" typeof="foaf:Person">
-    					<a href="{?person}" class="asc">{foaf:name}</a>
-    					<span property="vcard:role" content="?role">
-    						({?role})
-    					</span>
-    				</li>
-    			</ul>
-    		</aside>
-    		<aside class="optional">
-                <h3>Products or services</h3>
-    			<ul rev="gr:hasManufacturer" class="sorted">
-    				<li about="?service" typeof="gr:ProductOrServiceModel">
-    					<a href="{?service}" class="asc" property="rdfs:label" />
-    				</li>
-    			</ul>
-    		</aside>
-    		<aside class="optional">
-                <h3>Projects</h3>
-    			<ul rev="directory:hasParticipant" class="sorted">
-    				<li about="?project" typeof="foaf:Project">
-    					<a href="{?project}" class="asc" property="rdfs:label" />
-    				</li>
-    			</ul>
-    		</aside>
+    <div class="container">
+        <div class="page-header">
+            <h1>{foaf:name} <small>{vcard:role}</small></h1>
         </div>
-	</div>
-    <div class="hbox">
-		<a href="{vcard:url}" target="_blank">{vcard:url}</a>
-		<a href="mailto:{vcard:workEmail}" property="vcard:workEmail" />
-		<a href="tel:{vcard:workTel}" property="vcard:workTel" />
-	</div>
-	<div class="hbox">
-		<p class="vbox" rel="vcard:adr" resource="?adr">
-		    {vcard:street-address} {vcard:extended-address} {vcard:post-office-box}<br />
-		    {vcard:locality} {vcard:region}<br />
-		    {vcard:postal-code}<br />
-		    {vcard:country-name}<br />
-		</p>
-	</div>
-    <pre class="wiki" property="vcard:note" content="?note">{?note}</pre>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <pre class="wiki" property="vcard:note" content="?note">{?note}</pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Contact Information</h4>
+                        <p>
+                            URL: <a href="{vcard:url}" target="_blank">{vcard:url}</a>
+                        </p>
+                    	<p>
+                            Work Email: <a href="mailto:{vcard:workEmail}" property="vcard:workEmail" />
+                    	</p>
+                        <p>
+                            Work Phone: <a href="tel:{vcard:workTel}" property="vcard:workTel" />
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>Address</h4>
+                        <p rel="vcard:adr" resource="?adr">
+                    	    {vcard:street-address} {vcard:extended-address} {vcard:post-office-box}<br/>
+                		    {vcard:locality} {vcard:region}<br/>
+                		    {vcard:postal-code}<br/>
+                		    {vcard:country-name}<br/>
+                		</p>
+                    </div>
+                </div>
+            </div>
+            <div rel="vcard:org" resource="?orgInfo" class="col-sm-4">
+                <aside class="well well-sm">
+                    <h4>Member of</h4>
+                    <p>
+                        <a href="{?orgInfo}">{gr:legalName} {vcard:organization-unit}</a>
+                    </p>
+                </aside>
+                <aside class="well well-sm optional">
+                    <h4>Products or Services</h4>
+                    <ul rev="gr:hasManufacturer" class="sorted">
+            			<li about="?service" typeof="gr:ProductOrServiceModel">
+        					<a href="{?service}" class="asc" property="rdfs:label" />
+        				</li>
+        			</ul>
+                </aside>
+                <aside class="well well-sm optional">
+                    <h4>Projects</h4>
+                    <ul rev="directory:hasParticipant" class="sorted">
+            			<li about="?project" typeof="foaf:Project">
+        					<a href="{?project}" class="asc" property="rdfs:label" />
+        				</li>
+        			</ul>
+                </aside>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

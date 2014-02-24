@@ -35,81 +35,63 @@
 	</script>
 </head>
 <body resource="?this">
-	<hgroup>
-		<h1 property="gr:legalName" />
-		<h2 property="vcard:organization-unit" />
-	</hgroup>
-	<form resource="?this" typeof="vcard:Organization vcard:VCard" method="POST" enctype="application/sparql-update">
-		<fieldset class="hbox">
-			<div>
-				<input id="label" type="hidden" value="{rdfs:label}" />
-				<input id="fn" type="hidden" value="{vcard:fn}" />
-				<input id="name" type="hidden" value="{vcard:organization-name}" />
-				<div class="hbox">
-					<div class="control-group">
-						<label for="name" class="control-label">Legal Name</label>
-                        <div class="controls">
-    						<input type="text" id="legal" required="required" value="{gr:legalName}"
-    							onchange="updateLabel()" />
-                        </div>
-					</div>
-					<div class="control-group">
-						<label for="unit" class="control-lable">Business Unit</label>
-                        <div class="controls">
-						    <input type="text" id="unit" value="{vcard:organization-unit}" title="The name of a unit, division, department, or group within an organization" />
-                        </div>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<label for="orgtype" class="control-label">Type of Organization</label>
-                    <div class="controls">
-    					<select id="orgtype" rel="directory:isOrganizationType">
-        			        <option selected="selected" about="?orgtype" rev="calli:hasComponent" resource="type-of-organization/" property="skos:prefLabel" />
-    					</select>
+    <div class="container">
+        <div class="page-header">
+            <h1>{gr:legalName} <small>{vcard:organization-unit}</small></h1>
+        </div>
+        <form id="form" resource="?this" typeof="vcard:Organization vcard:VCard" method="POST" enctype="application/sparql-update">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <h4 for="name">Legal Name</h4>
+                        <input id="legal" type="text" autofocus="autofocus" required="required" value="{gr:legalName}" class="form-control" onchange="updateLabel()" />
+                        <input id="label" type="hidden" value="{rdfs:label}" class="form-control" />
+                        <input id="fn" type="hidden" value="{vcard:fn}" class="form-control" />
+                        <input id="name" type="hidden" value="{vcard:organization-name}" class="form-control" />
                     </div>
-				</div>
-
-				<div class="control-group">
-					<label for="url" class="control-lable">Web site URL</label>
-                    <div class="controls">
-					    <input id="url" type="url" required="required" value="{vcard:url}" style="width:52ex" />
+                    <div class="form-group">
+                        <h4 for="orgtype">Type of Organization</h4>
+                        <select id="orgtype" rel="directory:isOrganizationType" class="form-control">
+                            <option selected="selected" about="?orgtype" rev="calli:hasComponent" resource="type-of-organization/" property="skos:prefLabel" />
+                        </select>
                     </div>
-				</div>
-				<div class="hbox">
-					<div class="control-group">
-						<label for="email" class="control-label">Email</label>
-                        <div class="controls">
-						    <input id="email" type="email" value="{vcard:workEmail}" title="Preferred e-mail address for contact" />
-                        </div>
-					</div>
-					<div class="control-group">
-						<label for="tel" class="control-label">Telephone</label>
-                        <div class="controls">
-						    <input type="text" id="tel" placeholder="+country code-area-number" value="{vcard:workTel}" />
-                        </div>
-					</div>
-				</div>
-                <div class="control-group">
-        	        <label for="adr" class="control-label">Address <a href="javascript:void(0)" title="Another Address" onclick="return calli.addResource(event,'#adr')" class="ui-icon ui-icon-plus" /></label>
-    				<div id="adr" rel="vcard:adr" class="vbox controls">
-    					<div typeof="vcard:Address">
-    						<div class="hbox">
-    							<div class="vbox">
-    								<input type="text" placeholder="street address" value="{vcard:street-address}" />
-    								<input type="text" placeholder="extended address" value="{vcard:extended-address}" />
-    								<input type="text" placeholder="po box" value="{vcard:post-office-box}" />
-    							</div>
-    							<div class="vbox">
-    								<input type="text" placeholder="city" value="{vcard:locality}" />
-    								<input type="text" placeholder="state or province" value="{vcard:region}" />
-    								<input type="text" placeholder="postal code" value="{vcard:postal-code}" />
-    								<input type="hidden" value="{vcard:country-name}" />
-    							</div>
-    						</div>
-    						<div>
-    							<select onchange="$(this).parent().parent().children().children('div').find(':hidden').val(value).change()">
-    								<option value="{vcard:country-name}">{vcard:country-name}</option>
+                    <div class="form-group">
+                        <label for="unit">Business Unit</label>
+                        <input type="text" id="unit" value="{vcard:organization-unit}" title="The name of a unit, division, department, or group within an organization" />
+                    </div>
+                    <div class="form-group">
+                        <h4 for="url">Web site URL</h4>
+                        <input id="url" type="url" required="required" value="{vcard:url}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <h4 for="email">Email</h4>
+                        <input id="email" type="email" value="{vcard:workEmail}" title="Preferred e-mail address for contact" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <h4 for="tel">Telephone</h4>
+                        <input id="tel" type="text" placeholder="+country code-area-number" value="{vcard:workTel}" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <h4 for="note">Additional Information</h4>
+                        <textarea id="note" rows="3" class="form-control" placeholder="Resources in this area, years experience, etc.">{vcard:note}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <h4 for="adr">
+                            Address <a href="javascript:void(0)" title="Another Address" onclick="return calli.addResource(event,'#adr')"><span class="glyphicon glyphicon-plus" /></a>
+                        </h4>
+                        <div id="adr" rel="vcard:adr">
+                            <div typeof="vcard:Address">
+                                <input type="text" placeholder="street address" value="{vcard:street-address}" class="form-control" />
+                                <input type="text" placeholder="extended address" value="{vcard:extended-address}" class="form-control" />
+                                <input type="text" placeholder="po box" value="{vcard:post-office-box}" class="form-control" />
+                                <input type="text" placeholder="city" value="{vcard:locality}" class="form-control" />
+                                <input type="text" placeholder="state or province" value="{vcard:region}" class="form-control" />
+                                <input type="text" placeholder="postal code" value="{vcard:postal-code}" class="form-control" />
+                                <input type="hidden" value="{vcard:country-name}" />
+                                <select onchange="$(this).parent().parent().children().children('div').find(':hidden').val(value).change()" class="form-control">
+<option value="{vcard:country-name}">{vcard:country-name}</option>
 <option>Afghanistan</option>
 <option>Åland Islands</option>
 <option>Albania</option>
@@ -358,87 +340,66 @@
 <option>Western Sahara</option>
 <option>Yemen</option>
 <option>Zambia</option>
-<option>Zimbabwe</option>
-    							</select>
-    						</div>
-        			        <a href="javascript:void(0)" title="Remove This Address" onclick="return calli.removeResource(event)" class="ui-icon ui-icon-close" />
-    					</div>
+<option>Zimbabwe</option>     
+                                </select>
+                                <a href="javascript:void(0)" title="Remove This Address" onclick="return calli.removeResource(event)"><span class="glyphicon glyphicon-remove" /></a>
+                            </div>
+                        </div>
                     </div>
-				</div>
-
-				<div class="control-group">
-					<label for="note" class="control-label">Additional Information</label>
-                    <div class="controls">
-					    <textarea id="note" placeholder="Resources in this area, years" style="width:52ex;height:6em">{vcard:note}</textarea>
-                    </div>
-				</div>
-			</div>
-
-			<div>
-    			<div id="units" class="control-group" dropzone="link s:text/uri-list"
-                        ondrop="return calli.insertResource(event)">
-					<label class="control-label">Business Units <a href="Unit" title="Create" class="ui-icon ui-icon-newwin"
-                        onclick="return calli.createResource(event,'?create='+this.href)" /></label>
-                    <div rel="directory:hasOrganizationalUnit" class="vbox controls">
-    					<span about="?units" typeof="vcard:Organization" class="ui-state-highlight ui-corner-all">
-    						<span property="vcard:organization-unit"></span>
-    					</span>
-                    </div>
-				</div>
-
-				<div id="person" class="control-group" dropzone="link s:text/uri-list"
-                        ondrop="return calli.insertResource(event)">
-					<label class="control-label">Contact Person <a href="Person" title="Create" class="ui-icon ui-icon-newwin"
-                        onclick="return calli.createResource(event,'?create='+this.href)" /></label>
-                    <div rev="vcard:org" class="vbox controls">
-    					<span typeof="foaf:Person" class="ui-state-highlight ui-corner-all">
-    						<span property="foaf:name"></span>
-    						<span property="vcard:role" content="?role">
-    							({?role})
-    						</span>
-    					</span>
-                    </div>
-				</div>
-
-				<div id="service" class="control-group" dropzone="link s:text/uri-list"
-                        ondrop="return calli.insertResource(event)">
-					<label class="control-label">Products, Services, or Projects <a href="ProductOrService" title="Create" class="ui-icon ui-icon-newwin"
-                        onclick="return calli.createResource(event,'?create='+this.href)" /></label>
-					<div rev="gr:hasManufacturer" class="vbox controls">
-                        <span typeof="gr:ProductOrServiceModel" class="ui-state-highlight ui-corner-all">
-						    <span property="rdfs:label"></span>
+                </div>
+                <div class="col-sm-4">
+                    <div id="units" class="form-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
+                        <h4>Business Units <a href="Unit" title="Create" onclick="return calli.createResource(event,'?create='+this.href)"><span class="glyphicon glyphicon-plus" /></a></h4>
+                        <span about="?units" typeof="vcard:Organization" class="ui-state-highlight ui-corner-all">
+                            <span property="vcard:organization-unit"></span>
                         </span>
-					</div>
-				</div>
-
-                <div class="control-group" dropzone="link s:text/uri-list"
-                        ondrop="return calli.insertResource(event)">
-        			<label class="control-label">Depiction <a href="?create=/callimachus/Image" title="Upload"
-            				onclick="return calli.createResource(event)"
-                            class="ui-icon ui-icon-newwin" /></label>
-        			<div rel="foaf:depiction" class="controls">
-                        <span resource="?depiction" typeof="foaf:Image" class="ui-state-highlight ui-corner-all">
-            				<img src="{?depiction}" style="max-height:10em;max-width:10em" />
-                        </span>
-        			</div>
-        		</div>
-
-				<div class="control-group">
-					<label for="category" class="control-label">Experience</label>
-					<div id="category" rel="vcard:category" class="sorted controls">
-						<label class="input" about="?category" style="display:block">
-							<input type="checkbox" name="category" checked="checked" />
-							<span rev="calli:hasComponent" resource="area-of-expertise/" property="skos:prefLabel" class="asc" />
-						</label>
-					</div>
-				</div>
-			</div>
-        </fieldset>
-    	<div class="form-actions">
-    		<button id="save" type="submit" class="btn btn-success">Save</button>
-    		<button id="cancel" type="button" onclick="location.replace('?view')" class="btn">Cancel</button>
-    		<button id="delete" type="button" onclick="calli.deleteResource(event)" class="btn btn-danger">Delete</button>
-        </div>
-	</form>
+                    </div>
+                    <div id="person" class="form-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
+                        <h4>Contact Person <a href="Person" title="Create" onclick="return calli.createResource(event,'?create='+this.href)"><span class="glyphicon glyphicon-plus" /></a></h4>
+                        <div rev="vcard:org">
+                            <span typeof="foaf:Person" class="ui-state-highlight ui-corner-all">
+                                <span property="foaf:name"></span>
+                                    <span property="vcard:role" content="?role">
+                                    ({?role})
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="service" class="control-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
+                        <h4>Products, Services, or Projects <a href="ProductOrService" title="Create" onclick="return calli.createResource(event,'?create='+this.href)"><span class="glyphicon glyphicon-plus" /></a></h4>
+                        <div rev="gr:hasManufacturer">
+                            <span typeof="gr:ProductOrServiceModel" class="ui-state-highlight ui-corner-all">
+                                <span property="rdfs:label"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
+                        <h4>Depiction <a href="?create=/callimachus/Image" title="Upload" onclick="return calli.createResource(event)"><span class="glyphicon glyphicon-plus" /></a></h4>
+                        <div rel="foaf:depiction">
+                            <span resource="?depiction" typeof="foaf:Image" class="ui-state-highlight ui-corner-all">
+                                <img src="{?depiction}" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h4 for="category">Experience</h4>
+                        <div id="category" rel="vcard:category" class="sorted">
+                            <label class="input" about="?category" style="display:block">
+                                <input type="checkbox" name="category" checked="checked" />
+                                <span rev="calli:hasComponent" resource="area-of-expertise/" property="skos:prefLabel" class="asc" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button id="save" type="submit" class="btn btn-success">Save</button>
+        	        <button id="cancel" type="button" onclick="location.replace('?view')" class="btn">Cancel</button>
+    		        <button id="delete" type="button" onclick="calli.deleteResource(event)" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

@@ -15,45 +15,53 @@
 	<title resource="?this">{rdfs:label}</title>
 </head>
 <body resource="?this">
-    <h1 property="rdfs:label" />
-	<div id="sidebar">
-        <div rel="gr:hasManufacturer" resource="?org">
-    		<aside><p><a href="{?org}">{gr:legalName} {vcard:organization-unit}</a></p></aside>
-    		<aside class="optional">
-                <h3>Contact</h3>
-    			<ul rev="vcard:org" class="sorted">
-    				<li resource="?person" typeof="foaf:Person">
-    					<a href="{?person}" class="asc">{foaf:name}</a>
-    					<span property="vcard:role" content="?role">
-    						({?role})
-    					</span>
-    				</li>
-    			</ul>
-    		</aside>
-    		<aside class="optional">
-                <h3>Products, services, or projects</h3>
-    			<ul rev="gr:hasManufacturer" class="sorted">
-    				<li resource="?service" typeof="gr:ProductOrServiceModel">
-    					<a href="{?service}" class="asc" property="rdfs:label" />
-    				</li>
-    			</ul>
-    		</aside>
-    		<aside class="optional">
-                <h3>Deployments</h3>
-    			<ul rev="directory:hasParticipant" class="sorted">
-    				<li resource="?project" typeof="foaf:Project">
-    					<a href="{?project}" class="asc" property="rdfs:label" />
-    				</li>
-    			</ul>
-    		</aside>
+    <div class="container">
+        <div class="page-header">
+            <h1 property="rdfs:label" />
         </div>
-	</div>
-	<p rel="foaf:page" resource="?page">
-		<a href="?page" target="_blank">{?page}</a>
-	</p>
-	<div id="img" rel="foaf:depiction" resource="?img" style="margin: 0px 1ex 1ex 0px;max-width:40em">
-		<a href="{?img}" class="view"><img src="{?img}?small" style="max-height:100%;max-width:40em" /></a>
-	</div>
-	<pre class="wiki" property="rdfs:comment" content="?comment">{?comment}</pre>
+        <div class="row">
+            <div class="col-sm-8">
+                <pre class="wiki" property="rdfs:comment" content="?comment">{?comment}</pre>
+                <p rel="foaf:page" resource="?page">
+                	Homepage: <a href="?page" target="_blank">{?page}</a>
+            	</p>
+            	<div id="img" rel="foaf:depiction" resource="?img">
+            		<a href="{?img}" class="view"><img src="{?img}?small" /></a>
+            	</div>
+            </div>
+            <div rel="gr:hasManufacturer" resource="?org" class="col-sm-4">
+                <aside>
+                    <p class="lead"><a href="{?org}">{gr:legalName} {vcard:organization-unit}</a></p>
+                </aside>
+            	<aside class="optional">
+                    <h3>Contact</h3>
+        			<ul rev="vcard:org" class="sorted">
+        				<li resource="?person" typeof="foaf:Person">
+        					<a href="{?person}" class="asc">{foaf:name}</a>
+        					<span property="vcard:role" content="?role">
+        						({?role})
+        					</span>
+        				</li>
+        			</ul>
+        		</aside>
+        		<aside class="optional">
+                    <h3>Products, services, or projects</h3>
+        			<ul rev="gr:hasManufacturer" class="sorted">
+        				<li resource="?service" typeof="gr:ProductOrServiceModel">
+        					<a href="{?service}" class="asc" property="rdfs:label" />
+        				</li>
+        			</ul>
+        		</aside>
+        		<aside class="optional">
+                    <h3>Deployments</h3>
+        			<ul rev="directory:hasParticipant" class="sorted">
+        				<li resource="?project" typeof="foaf:Project">
+        					<a href="{?project}" class="asc" property="rdfs:label" />
+        				</li>
+        			</ul>
+        		</aside>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

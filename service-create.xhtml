@@ -38,7 +38,7 @@
                         <input type="url" id="web-page" placeholder="Web page with more detail" value="{foaf:page}" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <div id="org" class="col-sm-6" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
+                        <div id="org" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
                             <h4>Offered by</h4>
                             <div rel="gr:hasManufacturer" class="vbox controls">
                         		<span about="?org" typeof="vcard:Organization" class="label label-warning">
@@ -59,7 +59,7 @@
             			</div>
             		</div>
                     <div class="form-group">
-                        <label for="comment" class="control-label">Comment</label>
+                        <h4 for="comment" class="control-label">Comment</h4>
                         <textarea id="comment" class="auto-expand form-control">{rdfs:comment}</textarea>
                     </div>
                 </div>

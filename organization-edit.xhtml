@@ -368,7 +368,7 @@
                     <div id="service" class="control-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
                         <h4>Products, Services, or Projects <a href="ProductOrService" title="Create" onclick="return calli.createResource(event,'?create='+this.href)"><span class="glyphicon glyphicon-plus" /></a></h4>
                         <div rev="gr:hasManufacturer">
-                            <span typeof="gr:ProductOrServiceModel" class="ui-state-highlight ui-corner-all">
+                            <span typeof="gr:ProductOrServiceModel" class="label label-warning">
                                 <span property="rdfs:label"></span>
                             </span>
                         </div>
@@ -376,7 +376,7 @@
                     <div class="form-group" dropzone="link s:text/uri-list" ondrop="return calli.insertResource(event)">
                         <h4>Depiction <a href="?create=/callimachus/Image" title="Upload" onclick="return calli.createResource(event)"><span class="glyphicon glyphicon-plus" /></a></h4>
                         <div rel="foaf:depiction">
-                            <span resource="?depiction" typeof="foaf:Image" class="ui-state-highlight ui-corner-all">
+                            <span resource="?depiction" typeof="foaf:Image">
                                 <img src="{?depiction}" />
                             </span>
                         </div>

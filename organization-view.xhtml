@@ -55,16 +55,16 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <aside class="optional">
-                    <h3>Business Units</h3>
+                <aside class="optional well well-small">
+                    <h4>Business Units</h4>
                     <ul rel="directory:hasOrganizationalUnit" class="sorted">
                         <li about="?unit" typeof="vcard:Organization">
                             <a href="{?unit}" class="asc">{vcard:organization-unit}</a>
                         </li>
                     </ul>
             	</aside>
-                <aside class="optional">
-                    <h3>Contact</h3>
+                <aside class="optional well well-small">
+                    <h4>Contact</h4>
                     <ul rev="vcard:org" class="sorted">
                         <li about="?person" typeof="foaf:Person">
                             <a href="{?person}" class="asc">{foaf:name}</a>
@@ -74,25 +74,24 @@
                         </li>
                     </ul>
                 </aside>
-                <aside class="optional">
-                    <h3>Products, services, or projects</h3>
+                <aside class="optional well well-small">
+                    <h4>Products, services, or projects</h4>
                     <ul rev="gr:hasManufacturer" class="sorted">
                         <li about="?service" typeof="gr:ProductOrServiceModel">
                             <a href="{?service}" class="asc" property="rdfs:label" />
                         </li>
                     </ul>
                 </aside>
-                <aside class="optional">
-                    <h3>Deployments</h3>
+                <aside class="optional well well-small">
+                    <h4>Deployments <a about="Project" href="Project" onclick="return calli.createResource(event,'?create='+this.href)"><span class="glyphicon glyphicon-plus" /></a></h4>
                     <ul rev="directory:hasParticipant" class="sorted">
                         <li about="?project" typeof="foaf:Project">
                             <a href="{?project}" class="asc" property="rdfs:label" />
                         </li>
                     </ul>
-                    <p><a about="Project" href="Project" onclick="return calli.createResource(event,'?create='+this.href)">Add deployment</a></p>
         		</aside>
-                <aside class="optional">
-                    <h3>Experience</h3>
+                <aside class="optional well well-small">
+                    <h4>Experience</h4>
                     <ul class="sorted">
                         <li rel="vcard:category" resource="?category">
                             <a href="{?category}?whatlinkshere" class="asc">{skos:prefLabel}</a>

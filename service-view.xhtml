@@ -33,8 +33,8 @@
                 <aside>
                     <p class="lead"><a href="{?org}">{gr:legalName} {vcard:organization-unit}</a></p>
                 </aside>
-            	<aside class="optional">
-                    <h3>Contact</h3>
+            	<aside class="optional well well-small">
+                    <h4>Contact</h4>
         			<ul rev="vcard:org" class="sorted">
         				<li resource="?person" typeof="foaf:Person">
         					<a href="{?person}" class="asc">{foaf:name}</a>
@@ -44,16 +44,16 @@
         				</li>
         			</ul>
         		</aside>
-        		<aside class="optional">
-                    <h3>Products, services, or projects</h3>
+        		<aside class="optional well well-small">
+                    <h4>Products, services, or projects</h4>
         			<ul rev="gr:hasManufacturer" class="sorted">
         				<li resource="?service" typeof="gr:ProductOrServiceModel">
         					<a href="{?service}" class="asc" property="rdfs:label" />
         				</li>
         			</ul>
         		</aside>
-        		<aside class="optional">
-                    <h3>Deployments</h3>
+        		<aside class="optional well well-small">
+                    <h4>Deployments</h4>
         			<ul rev="directory:hasParticipant" class="sorted">
         				<li resource="?project" typeof="foaf:Project">
         					<a href="{?project}" class="asc" property="rdfs:label" />
